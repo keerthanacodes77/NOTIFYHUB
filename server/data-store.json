@@ -1,0 +1,580 @@
+{
+  "users": [
+    {
+      "id": "admin-user-001",
+      "name": "Dr. Evelyn Vance",
+      "email": "admin@notifyhub.edu",
+      "passwordHash": "$2a$10$KuM2Ar.JuH.N1HAEKtH0U.kSrhALAdwSGmVH39AGeY46WPc7Yk/nS",
+      "role": "ADMIN",
+      "rollNumber": null,
+      "department": "Dean of Student Affairs",
+      "year": null,
+      "createdAt": "2026-08-19T08:54:08.184Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "student-user-001",
+      "name": "Aarav Sharma",
+      "email": "aarav.sharma@student.edu",
+      "passwordHash": "$2a$10$r//erVXictj89ipOkQiRVuxEiqDxSl1Rooshj36KSPV3rktBtOABK",
+      "role": "STUDENT",
+      "rollNumber": "CS2023042",
+      "department": "Computer Science & Engineering",
+      "year": "3rd Year",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "student-user-002",
+      "name": "Priya Patel",
+      "email": "priya.patel@student.edu",
+      "passwordHash": "$2a$10$r//erVXictj89ipOkQiRVuxEiqDxSl1Rooshj36KSPV3rktBtOABK",
+      "role": "STUDENT",
+      "rollNumber": "EC2023089",
+      "department": "Electronics & Communication",
+      "year": "3rd Year",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "student-user-003",
+      "name": "Rohan Verma",
+      "email": "rohan.verma@student.edu",
+      "passwordHash": "$2a$10$r//erVXictj89ipOkQiRVuxEiqDxSl1Rooshj36KSPV3rktBtOABK",
+      "role": "STUDENT",
+      "rollNumber": "ME2024015",
+      "department": "Mechanical Engineering",
+      "year": "2nd Year",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "usr-1787130538121-t3cprk",
+      "name": "Kavya Reddy",
+      "email": "test.student.1787130538055@student.edu",
+      "passwordHash": "$2a$10$udAp3Vhmh2hoV.TqEeSQU.F7ctZd5uHAYj7jSVZXwY3bD5Hsinu7y",
+      "role": "STUDENT",
+      "rollNumber": "CS538055",
+      "department": "Computer Science & Engineering",
+      "year": "2nd Year",
+      "createdAt": "2026-08-19T09:08:58.121Z",
+      "updatedAt": "2026-08-19T09:08:58.121Z"
+    },
+    {
+      "id": "usr-1787155759559-tj4j1w",
+      "name": "keerthana",
+      "email": "mothukukeerthana@gmail.com",
+      "passwordHash": "$2a$10$5G9eCgSQ1ssDBrO8GfPGVubaqGx3rW4Itb2KgSC3Gk3kRPuiOvOCy",
+      "role": "STUDENT",
+      "rollNumber": "24891A0536",
+      "department": "Computer Science & Engineering",
+      "year": "3rd Year",
+      "createdAt": "2026-08-19T16:09:19.559Z",
+      "updatedAt": "2026-08-19T16:09:19.559Z"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "ann-001",
+      "title": "🚨 URGENT: Campus Network Maintenance & Server Migration Tonight",
+      "description": "The central campus IT infrastructure and Wi-Fi services will undergo critical security patching and bandwidth expansion tonight between 11:00 PM and 04:00 AM. Student portal access and campus Wi-Fi might experience intermittent connectivity.",
+      "category": "General",
+      "priority": "URGENT",
+      "status": "PUBLISHED",
+      "department": "All",
+      "year": "All",
+      "deadline": "2026-08-20T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-19T06:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "ann-003",
+      "title": "Microsoft & Google Campus Recruitment Drive 2026-27",
+      "description": "Registration is now open for Final & Pre-Final Year B.Tech and M.Tech students for the upcoming technical software engineering recruitment drive. Eligible students must upload their updated resumes before the registration deadline.",
+      "category": "Placement",
+      "priority": "IMPORTANT",
+      "status": "PUBLISHED",
+      "department": "Computer Science & Engineering",
+      "year": "3rd Year",
+      "deadline": "2026-08-26T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": "Placement_Eligibility_Criteria.pdf",
+      "attachmentSize": 524288,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-18T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "ann-004",
+      "title": "Hands-on Workshop: AI Agents and Generative Systems in Industry",
+      "description": "Department of CSE in association with IEEE Student Branch is hosting a 2-day intensive weekend workshop on building autonomous AI agents and deploying scalable machine learning microservices. Certificates will be provided to all attendees.",
+      "category": "Workshop",
+      "priority": "NORMAL",
+      "status": "PUBLISHED",
+      "department": "Computer Science & Engineering",
+      "year": "All",
+      "deadline": "2026-08-24T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": "AI_Workshop_Brochure.pdf",
+      "attachmentSize": 786432,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-17T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "ann-006",
+      "title": "Academic Fee Payment & Scholarship Re-Verification Notice",
+      "description": "Students applying for state and merit-based national scholarships are requested to verify their bank account IFSC and upload the latest fee receipt on the national portal before Friday.",
+      "category": "Academic",
+      "priority": "IMPORTANT",
+      "status": "PUBLISHED",
+      "department": "All",
+      "year": "All",
+      "deadline": "2026-08-23T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-15T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-1787130538006-it0fqv",
+      "title": "🧪 AI Robotics Grand Prix 2026",
+      "description": "Autonomous rover challenge and coding hackathon.",
+      "date": "2026-08-29T09:08:58.003Z",
+      "startTime": "10:00 AM",
+      "endTime": "06:00 PM",
+      "venue": "Robotics Complex, Block B",
+      "organizer": "Robotics Society & IEEE",
+      "registrationEnabled": true,
+      "registrationDeadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-19T09:08:58.006Z",
+      "updatedAt": "2026-08-19T09:08:58.006Z"
+    },
+    {
+      "id": "evt-001",
+      "title": "National Level 36-Hour Hackathon \"HackVortex 2026\"",
+      "description": "A national 36-hour hackathon bringing together the brightest student developers, designers, and innovators to solve real-world problems in AI, Web3, HealthTech, and Smart Cities.",
+      "date": "2026-08-24T08:54:08.190Z",
+      "startTime": "09:00 AM",
+      "endTime": "09:00 PM",
+      "venue": "Main Auditorium & Innovation Labs",
+      "organizer": "NotifyHub Tech Society & ACM Chapter",
+      "registrationEnabled": true,
+      "registrationDeadline": "2026-08-23T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": "HackVortex_Guidelines.pdf",
+      "attachmentSize": 1048576,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "evt-002",
+      "title": "Distinguished Guest Lecture on Quantum Computing",
+      "description": "Keynote lecture by Dr. S. Ramanujan from Center for Advanced Computing on recent breakthroughs in topological quantum computing and quantum algorithms.",
+      "date": "2026-08-27T08:54:08.190Z",
+      "startTime": "02:00 PM",
+      "endTime": "04:30 PM",
+      "venue": "Seminar Hall 3, Science Complex",
+      "organizer": "Department of Physics & CSE",
+      "registrationEnabled": true,
+      "registrationDeadline": "2026-08-26T08:54:08.190Z",
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    },
+    {
+      "id": "evt-003",
+      "title": "Annual Sports League & Track Finals",
+      "description": "Inter-department athletics, football, basketball, and cricket tournament finals with trophy presentation by college alumni.",
+      "date": "2026-08-31T08:54:08.190Z",
+      "startTime": "08:00 AM",
+      "endTime": "06:00 PM",
+      "venue": "Central Sports Arena & University Grounds",
+      "organizer": "Department of Physical Education",
+      "registrationEnabled": false,
+      "registrationDeadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-08-19T08:54:08.190Z",
+      "updatedAt": "2026-08-19T08:54:08.190Z"
+    }
+  ],
+  "queries": [
+    {
+      "id": "qry-1787157174870-lm0frh",
+      "subject": "about collecting MEMOS",
+      "message": "where should the absent students collect the memos",
+      "status": "RESOLVED",
+      "response": "Collect your memos in examination branch",
+      "studentId": "usr-1787155759559-tj4j1w",
+      "respondedBy": "admin-user-001",
+      "respondedAt": "2026-08-19T16:33:48.656Z",
+      "createdAt": "2026-08-19T16:32:54.870Z",
+      "updatedAt": "2026-08-19T16:33:48.656Z"
+    },
+    {
+      "id": "qry-1787130538043-heo9ie",
+      "subject": "Cap-stone Project Presentation Schedule",
+      "message": "Could our team present during the morning slot on Friday?",
+      "status": "IN_PROGRESS",
+      "response": "Approved! Your team is scheduled for 10:30 AM in Lab 3.",
+      "studentId": "student-user-001",
+      "respondedBy": "admin-user-001",
+      "respondedAt": "2026-08-19T09:25:14.589Z",
+      "createdAt": "2026-08-19T09:08:58.043Z",
+      "updatedAt": "2026-08-19T09:25:14.589Z"
+    },
+    {
+      "id": "qry-001",
+      "subject": "Correction in Elective Course Registration Portal",
+      "message": "Hello Admin, I am trying to enroll in \"Advanced Deep Learning\" under CSE Elective IV, but the portal throws a prerequisite error for CS302 which I have already completed in semester 4. Could you please review and unlock the slot?",
+      "status": "RESOLVED",
+      "response": "Dear Aarav, We have verified your academic transcript and updated your prerequisites in the portal database. You can now successfully enroll in Advanced Deep Learning. Let us know if you encounter any other issues.",
+      "studentId": "student-user-001",
+      "respondedBy": "admin-user-001",
+      "createdAt": "2026-08-17T08:54:08.190Z",
+      "updatedAt": "2026-08-18T08:54:08.190Z",
+      "respondedAt": "2026-08-18T08:54:08.190Z"
+    },
+    {
+      "id": "qry-002",
+      "subject": "Hostel Wi-Fi Connectivity and Bandwidth in Block C",
+      "message": "The Wi-Fi access points on the 3rd floor of Hostel Block C are experiencing frequent disconnects during evening study hours (7 PM to 10 PM). Requesting IT department to check the router.",
+      "status": "IN_PROGRESS",
+      "response": "Hi Priya, The network team has scheduled an on-site inspection today at 4 PM to replace the secondary repeater in Block C.",
+      "studentId": "student-user-002",
+      "respondedBy": "admin-user-001",
+      "createdAt": "2026-08-18T14:54:08.190Z",
+      "updatedAt": "2026-08-19T02:54:08.190Z",
+      "respondedAt": "2026-08-19T02:54:08.190Z"
+    },
+    {
+      "id": "qry-003",
+      "subject": "Query Regarding Internship No-Objection Certificate (NOC)",
+      "message": "I have received a summer research internship offer from an industrial R&D lab. What is the procedure and timeline to get the Dean approval and official college NOC issued?",
+      "status": "OPEN",
+      "response": null,
+      "studentId": "student-user-003",
+      "respondedBy": null,
+      "createdAt": "2026-08-19T05:54:08.190Z",
+      "updatedAt": "2026-08-19T05:54:08.190Z",
+      "respondedAt": null
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1787157228657-2d8a5c",
+      "title": "💬 Admin Responded to: about collecting MEMOS",
+      "message": "Admin Dr. Evelyn Vance: \"Collect your memos in examination branch\n\"",
+      "type": "QUERY_REPLY",
+      "read": true,
+      "link": "/student/qa",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-08-19T16:33:48.657Z"
+    },
+    {
+      "id": "notif-1787155759560-tf5fgy",
+      "title": "🎓 Welcome to NotifyHub!",
+      "message": "Welcome keerthana! Your student account is now active. Check announcements, events, and college notices.",
+      "type": "SYSTEM",
+      "read": false,
+      "link": "/student/home",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-08-19T16:09:19.560Z"
+    },
+    {
+      "id": "notif-1787131514594-qgz63p",
+      "title": "💬 Admin Responded to: Cap-stone Project Presentation Schedule",
+      "message": "Admin Dr. Evelyn Vance: \"Approved! Your team is scheduled for 10:30 AM in Lab 3.\"",
+      "type": "QUERY_REPLY",
+      "read": true,
+      "link": "/student/qa",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-19T09:25:14.594Z"
+    },
+    {
+      "id": "notif-1787130538122-ugikqn",
+      "title": "🎓 Welcome to NotifyHub!",
+      "message": "Welcome Kavya Reddy! Your student account is now active. Check announcements, events, and college notices.",
+      "type": "SYSTEM",
+      "read": false,
+      "link": "/student/home",
+      "userId": "usr-1787130538121-t3cprk",
+      "createdAt": "2026-08-19T09:08:58.122Z"
+    },
+    {
+      "id": "notif-1787130538048-etwfco",
+      "title": "💬 Admin Responded to: Cap-stone Project Presentation Schedule",
+      "message": "Admin Dr. Evelyn Vance: \"Approved! Your team is scheduled for 10:30 AM in Lab 3.\"",
+      "type": "QUERY_REPLY",
+      "read": false,
+      "link": "/student/qa",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-19T09:08:58.048Z"
+    },
+    {
+      "id": "notif-1787130538038-oltvdv",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 29/8/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-003",
+      "createdAt": "2026-08-19T09:08:58.038Z"
+    },
+    {
+      "id": "notif-1787130538037-jyrxkt",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 29/8/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-002",
+      "createdAt": "2026-08-19T09:08:58.037Z"
+    },
+    {
+      "id": "notif-1787130538036-l2ofma",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 29/8/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-19T09:08:58.036Z"
+    },
+    {
+      "id": "notif-1787130537996-1njd3p",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-003",
+      "createdAt": "2026-08-19T09:08:57.996Z"
+    },
+    {
+      "id": "notif-1787130537995-dnjhto",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-002",
+      "createdAt": "2026-08-19T09:08:57.995Z"
+    },
+    {
+      "id": "notif-1787130537994-7iqw0i",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-19T09:08:57.994Z"
+    },
+    {
+      "id": "notif-001",
+      "title": "🚨 Urgent Notice Published",
+      "message": "Campus Network Maintenance & Server Migration Tonight.",
+      "type": "URGENT_ALERT",
+      "read": false,
+      "link": "/student/urgent-alerts",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-19T06:54:08.190Z"
+    },
+    {
+      "id": "notif-002",
+      "title": "Query Resolved",
+      "message": "Administrator Evelyn Vance responded to your query: \"Correction in Elective Course Registration Portal\".",
+      "type": "QUERY_REPLY",
+      "read": false,
+      "link": "/student/qa",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-18T08:54:08.191Z"
+    },
+    {
+      "id": "notif-003",
+      "title": "New Placement Drive Announced",
+      "message": "Microsoft & Google Campus Recruitment Drive 2026-27 is now open for applications.",
+      "type": "ANNOUNCEMENT",
+      "read": true,
+      "link": "/student/announcements",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-18T09:54:08.191Z"
+    },
+    {
+      "id": "notif-004",
+      "title": "New Event Scheduled",
+      "message": "National Level 36-Hour Hackathon \"HackVortex 2026\" registration is now open.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-001",
+      "createdAt": "2026-08-18T02:54:08.191Z"
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "act-1787157286682-5y772i",
+      "action": "ADMIN_LOGOUT",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged out.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:34:46.682Z"
+    },
+    {
+      "id": "act-1787157260046-7otbm8",
+      "action": "ANNOUNCEMENT_DELETED",
+      "entityType": "Announcement",
+      "entityId": "ann-002",
+      "details": "Deleted announcement \"Mid-Term Examination Schedule - Autumn Semester 2026\".",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:34:20.046Z"
+    },
+    {
+      "id": "act-1787157247656-sgidls",
+      "action": "ANNOUNCEMENT_DELETED",
+      "entityType": "Announcement",
+      "entityId": "ann-005",
+      "details": "Deleted announcement \"Annual Inter-College Cultural & Tech Symposium \"INVENTO 2026\"\".",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:34:07.656Z"
+    },
+    {
+      "id": "act-1787157241153-26fnmo",
+      "action": "ANNOUNCEMENT_DELETED",
+      "entityType": "Announcement",
+      "entityId": "ann-1787130537993-size2h",
+      "details": "Deleted announcement \"🧪 Automated Test Announcement: IEEE Symposium 2026\".",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:34:01.153Z"
+    },
+    {
+      "id": "act-1787157228659-z5sg6g",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-1787157174870-lm0frh",
+      "details": "Administrator Dr. Evelyn Vance responded to query \"about collecting MEMOS\" (Status: RESOLVED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:33:48.659Z"
+    },
+    {
+      "id": "act-1787157194616-cqb8qp",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:33:14.616Z"
+    },
+    {
+      "id": "act-1787155356314-eb3drf",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T16:02:36.314Z"
+    },
+    {
+      "id": "act-1787131514597-yjvpji",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-1787130538043-heo9ie",
+      "details": "Administrator Dr. Evelyn Vance responded to query \"Cap-stone Project Presentation Schedule\" (Status: IN_PROGRESS).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:25:14.597Z"
+    },
+    {
+      "id": "act-1787131484570-wpmqkr",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:24:44.570Z"
+    },
+    {
+      "id": "act-1787130538049-qqz85b",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-1787130538043-heo9ie",
+      "details": "Administrator Dr. Evelyn Vance responded to query \"Cap-stone Project Presentation Schedule\" (Status: RESOLVED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:08:58.049Z"
+    },
+    {
+      "id": "act-1787130538039-qusn46",
+      "action": "EVENT_CREATED",
+      "entityType": "Event",
+      "entityId": "evt-1787130538006-it0fqv",
+      "details": "Created event \"🧪 AI Robotics Grand Prix 2026\" on 2026-08-29T09:08:58.003Z.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:08:58.039Z"
+    },
+    {
+      "id": "act-1787130537997-8z4jzm",
+      "action": "ANNOUNCEMENT_CREATED",
+      "entityType": "Announcement",
+      "entityId": "ann-1787130537993-size2h",
+      "details": "Created announcement \"🧪 Automated Test Announcement: IEEE Symposium 2026\" (IMPORTANT - PUBLISHED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:08:57.997Z"
+    },
+    {
+      "id": "act-1787130537978-pygj1u",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T09:08:57.978Z"
+    },
+    {
+      "id": "act-001",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Evelyn Vance logged in successfully from campus network.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T05:54:08.191Z"
+    },
+    {
+      "id": "act-002",
+      "action": "ANNOUNCEMENT_CREATED",
+      "entityType": "Announcement",
+      "entityId": "ann-001",
+      "details": "Created and broadcast urgent alert: Campus Network Maintenance & Server Migration Tonight.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-19T06:54:08.191Z"
+    },
+    {
+      "id": "act-003",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-001",
+      "details": "Responded and resolved elective registration query for student Aarav Sharma.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-08-18T08:54:08.191Z"
+    }
+  ]
+}

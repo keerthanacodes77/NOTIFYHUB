@@ -107,6 +107,7 @@
       "year": "3rd Year",
       "createdAt": "2026-09-23T12:12:50.293Z",
       "updatedAt": "2026-09-23T12:12:50.293Z"
+<<<<<<< HEAD
     },
     {
       "id": "usr-1790606999240-1w31sk",
@@ -119,10 +120,13 @@
       "year": "2nd Year",
       "createdAt": "2026-09-28T14:49:59.240Z",
       "updatedAt": "2026-09-28T14:49:59.240Z"
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
     }
   ],
   "announcements": [
     {
+<<<<<<< HEAD
       "id": "ann-1790606998985-n1tq4g",
       "title": "🧪 Automated Test Announcement: IEEE Symposium 2026",
       "description": "Test circular published to verify admin broadcast channel.",
@@ -140,6 +144,8 @@
       "updatedAt": "2026-09-28T14:49:58.985Z"
     },
     {
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
       "id": "ann-1789737166024-1s2nl1",
       "title": "🧪 Automated Test Announcement: IEEE Symposium 2026",
       "description": "Test circular published to verify admin broadcast channel.",
@@ -244,6 +250,7 @@
   ],
   "events": [
     {
+<<<<<<< HEAD
       "id": "evt-1790606999017-u28zcd",
       "title": "🧪 AI Robotics Grand Prix 2026",
       "description": "Autonomous rover challenge and coding hackathon.",
@@ -262,6 +269,8 @@
       "updatedAt": "2026-09-28T14:49:59.017Z"
     },
     {
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
       "id": "evt-1789737166057-jlc1xb",
       "title": "🧪 AI Robotics Grand Prix 2026",
       "description": "Autonomous rover challenge and coding hackathon.",
@@ -372,6 +381,7 @@
   ],
   "queries": [
     {
+<<<<<<< HEAD
       "id": "qry-1790606999077-n3o18y",
       "subject": "Cap-stone Project Presentation Schedule",
       "message": "Could our team present during the morning slot on Friday?",
@@ -384,6 +394,8 @@
       "updatedAt": "2026-09-28T14:49:59.087Z"
     },
     {
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
       "id": "qry-1789737166085-6hmrrh",
       "subject": "Cap-stone Project Presentation Schedule",
       "message": "Could our team present during the morning slot on Friday?",
@@ -470,6 +482,7 @@
   ],
   "notifications": [
     {
+<<<<<<< HEAD
       "id": "notif-1790606999242-fankzj",
       "title": "🎓 Welcome to NotifyHub!",
       "message": "Welcome Kavya Reddy! Your student account is now active. Check announcements, events, and college notices.",
@@ -650,6 +663,8 @@
       "createdAt": "2026-09-28T14:49:58.988Z"
     },
     {
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
       "id": "notif-1790165570296-04161p",
       "title": "🎓 Welcome to NotifyHub!",
       "message": "Welcome Keerthana Mothuku! Your student account is now active. Check announcements, events, and college notices.",
@@ -1072,6 +1087,7 @@
   ],
   "activityLogs": [
     {
+<<<<<<< HEAD
       "id": "act-1790606999091-0nu6fq",
       "action": "QUERY_RESPONDED",
       "entityType": "Query",
@@ -1108,6 +1124,8 @@
       "createdAt": "2026-09-28T14:49:58.954Z"
     },
     {
+=======
+>>>>>>> 912408b641c336872aec48ae6b7d7864c740e6aa
       "id": "act-1789737166096-hqbzi1",
       "action": "QUERY_RESPONDED",
       "entityType": "Query",

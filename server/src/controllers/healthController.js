@@ -12,6 +12,7 @@ export const getHealth = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
+      message: 'NotifyHub API is running',
       status: 'HEALTHY',
       timestamp: new Date().toISOString(),
       version: '1.0.0',

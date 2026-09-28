@@ -71,9 +71,79 @@
       "year": "3rd Year",
       "createdAt": "2026-08-19T16:09:19.559Z",
       "updatedAt": "2026-08-19T16:09:19.559Z"
+    },
+    {
+      "id": "usr-1789737109179-u69wo2",
+      "name": "Kavya Reddy",
+      "email": "test.student.1789737109055@student.edu",
+      "passwordHash": "$2a$10$a/iQ9Jjzf/aZYs9BrlCbDehH9vQQ939T4rRL9c8KZgGZqfUKMwXvS",
+      "role": "STUDENT",
+      "rollNumber": "CS109055",
+      "department": "Computer Science & Engineering",
+      "year": "2nd Year",
+      "createdAt": "2026-09-18T13:11:49.179Z",
+      "updatedAt": "2026-09-18T13:11:49.179Z"
+    },
+    {
+      "id": "usr-1789737166299-2grdrf",
+      "name": "Kavya Reddy",
+      "email": "test.student.1789737166113@student.edu",
+      "passwordHash": "$2a$10$/Fl0LB9SJvuUBgxy/l3e8eMdco1hets2.B/EMncuTCmXCLzNh0vei",
+      "role": "STUDENT",
+      "rollNumber": "CS166113",
+      "department": "Computer Science & Engineering",
+      "year": "2nd Year",
+      "createdAt": "2026-09-18T13:12:46.299Z",
+      "updatedAt": "2026-09-18T13:12:46.299Z"
+    },
+    {
+      "id": "usr-1790165570293-f2h8e8",
+      "name": "Keerthana Mothuku",
+      "email": "chikkyuniverse@gmail.com",
+      "passwordHash": "$2a$10$T35SBrWw31lx9vksPOW8RePb0ypWGe6ju3XdOfpAeXmHGcTjahX8W",
+      "role": "STUDENT",
+      "rollNumber": "24891A0535",
+      "department": "Computer Science & Engineering",
+      "year": "3rd Year",
+      "createdAt": "2026-09-23T12:12:50.293Z",
+      "updatedAt": "2026-09-23T12:12:50.293Z"
     }
   ],
   "announcements": [
+    {
+      "id": "ann-1789737166024-1s2nl1",
+      "title": "🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "description": "Test circular published to verify admin broadcast channel.",
+      "category": "Workshop",
+      "priority": "IMPORTANT",
+      "status": "PUBLISHED",
+      "department": "Computer Science & Engineering",
+      "year": "All",
+      "deadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.024Z",
+      "updatedAt": "2026-09-18T13:12:46.024Z"
+    },
+    {
+      "id": "ann-1789737108969-2ojbmg",
+      "title": "🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "description": "Test circular published to verify admin broadcast channel.",
+      "category": "Workshop",
+      "priority": "IMPORTANT",
+      "status": "PUBLISHED",
+      "department": "Computer Science & Engineering",
+      "year": "All",
+      "deadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:48.969Z",
+      "updatedAt": "2026-09-18T13:11:48.969Z"
+    },
     {
       "id": "ann-001",
       "title": "🚨 URGENT: Campus Network Maintenance & Server Migration Tonight",
@@ -144,6 +214,42 @@
     }
   ],
   "events": [
+    {
+      "id": "evt-1789737166057-jlc1xb",
+      "title": "🧪 AI Robotics Grand Prix 2026",
+      "description": "Autonomous rover challenge and coding hackathon.",
+      "date": "2026-09-28T13:12:46.053Z",
+      "startTime": "10:00 AM",
+      "endTime": "06:00 PM",
+      "venue": "Robotics Complex, Block B",
+      "organizer": "Robotics Society & IEEE",
+      "registrationEnabled": true,
+      "registrationDeadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.057Z",
+      "updatedAt": "2026-09-18T13:12:46.057Z"
+    },
+    {
+      "id": "evt-1789737108990-vrslxu",
+      "title": "🧪 AI Robotics Grand Prix 2026",
+      "description": "Autonomous rover challenge and coding hackathon.",
+      "date": "2026-09-28T13:11:48.986Z",
+      "startTime": "10:00 AM",
+      "endTime": "06:00 PM",
+      "venue": "Robotics Complex, Block B",
+      "organizer": "Robotics Society & IEEE",
+      "registrationEnabled": true,
+      "registrationDeadline": null,
+      "attachment": null,
+      "attachmentName": null,
+      "attachmentSize": null,
+      "createdBy": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:48.990Z",
+      "updatedAt": "2026-09-18T13:11:48.990Z"
+    },
     {
       "id": "evt-1787130538006-it0fqv",
       "title": "🧪 AI Robotics Grand Prix 2026",
@@ -219,6 +325,30 @@
   ],
   "queries": [
     {
+      "id": "qry-1789737166085-6hmrrh",
+      "subject": "Cap-stone Project Presentation Schedule",
+      "message": "Could our team present during the morning slot on Friday?",
+      "status": "RESOLVED",
+      "response": "Approved! Your team is scheduled for 10:30 AM in Lab 3.",
+      "studentId": "student-user-001",
+      "respondedBy": "admin-user-001",
+      "respondedAt": "2026-09-18T13:12:46.091Z",
+      "createdAt": "2026-09-18T13:12:46.085Z",
+      "updatedAt": "2026-09-18T13:12:46.091Z"
+    },
+    {
+      "id": "qry-1789737109032-ix80l6",
+      "subject": "Cap-stone Project Presentation Schedule",
+      "message": "Could our team present during the morning slot on Friday?",
+      "status": "RESOLVED",
+      "response": "Approved! Your team is scheduled for 10:30 AM in Lab 3.",
+      "studentId": "student-user-001",
+      "respondedBy": "admin-user-001",
+      "respondedAt": "2026-09-18T13:11:49.039Z",
+      "createdAt": "2026-09-18T13:11:49.032Z",
+      "updatedAt": "2026-09-18T13:11:49.039Z"
+    },
+    {
       "id": "qry-1787157174870-lm0frh",
       "subject": "about collecting MEMOS",
       "message": "where should the absent students collect the memos",
@@ -280,6 +410,276 @@
     }
   ],
   "notifications": [
+    {
+      "id": "notif-1790165570296-04161p",
+      "title": "🎓 Welcome to NotifyHub!",
+      "message": "Welcome Keerthana Mothuku! Your student account is now active. Check announcements, events, and college notices.",
+      "type": "SYSTEM",
+      "read": false,
+      "link": "/student/home",
+      "userId": "usr-1790165570293-f2h8e8",
+      "createdAt": "2026-09-23T12:12:50.296Z"
+    },
+    {
+      "id": "notif-1789737166305-h6gamk",
+      "title": "🎓 Welcome to NotifyHub!",
+      "message": "Welcome Kavya Reddy! Your student account is now active. Check announcements, events, and college notices.",
+      "type": "SYSTEM",
+      "read": false,
+      "link": "/student/home",
+      "userId": "usr-1789737166299-2grdrf",
+      "createdAt": "2026-09-18T13:12:46.305Z"
+    },
+    {
+      "id": "notif-1789737166094-gyyrjh",
+      "title": "💬 Admin Responded to: Cap-stone Project Presentation Schedule",
+      "message": "Admin Dr. Evelyn Vance: \"Approved! Your team is scheduled for 10:30 AM in Lab 3.\"",
+      "type": "QUERY_REPLY",
+      "read": false,
+      "link": "/student/qa",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:12:46.094Z"
+    },
+    {
+      "id": "notif-1789737166076-dehiwp",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "usr-1789737109179-u69wo2",
+      "createdAt": "2026-09-18T13:12:46.076Z"
+    },
+    {
+      "id": "notif-1789737166073-wrbep8",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-09-18T13:12:46.073Z"
+    },
+    {
+      "id": "notif-1789737166070-k73j28",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "usr-1787130538121-t3cprk",
+      "createdAt": "2026-09-18T13:12:46.070Z"
+    },
+    {
+      "id": "notif-1789737166064-6258jz",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-003",
+      "createdAt": "2026-09-18T13:12:46.064Z"
+    },
+    {
+      "id": "notif-1789737166062-kjd4b7",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": true,
+      "link": "/student/calendar",
+      "userId": "student-user-002",
+      "createdAt": "2026-09-18T13:12:46.062Z"
+    },
+    {
+      "id": "notif-1789737166060-u9nz6p",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:12:46.060Z"
+    },
+    {
+      "id": "notif-1789737166042-pjsyo7",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "usr-1789737109179-u69wo2",
+      "createdAt": "2026-09-18T13:12:46.042Z"
+    },
+    {
+      "id": "notif-1789737166040-l3anzz",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-09-18T13:12:46.040Z"
+    },
+    {
+      "id": "notif-1789737166037-yosse0",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "usr-1787130538121-t3cprk",
+      "createdAt": "2026-09-18T13:12:46.037Z"
+    },
+    {
+      "id": "notif-1789737166034-xz1sez",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-003",
+      "createdAt": "2026-09-18T13:12:46.034Z"
+    },
+    {
+      "id": "notif-1789737166030-xfslkl",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-002",
+      "createdAt": "2026-09-18T13:12:46.030Z"
+    },
+    {
+      "id": "notif-1789737166027-4xcgq7",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:12:46.027Z"
+    },
+    {
+      "id": "notif-1789737109181-7ieksv",
+      "title": "🎓 Welcome to NotifyHub!",
+      "message": "Welcome Kavya Reddy! Your student account is now active. Check announcements, events, and college notices.",
+      "type": "SYSTEM",
+      "read": false,
+      "link": "/student/home",
+      "userId": "usr-1789737109179-u69wo2",
+      "createdAt": "2026-09-18T13:11:49.181Z"
+    },
+    {
+      "id": "notif-1789737109041-ni52s5",
+      "title": "💬 Admin Responded to: Cap-stone Project Presentation Schedule",
+      "message": "Admin Dr. Evelyn Vance: \"Approved! Your team is scheduled for 10:30 AM in Lab 3.\"",
+      "type": "QUERY_REPLY",
+      "read": false,
+      "link": "/student/qa",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:11:49.041Z"
+    },
+    {
+      "id": "notif-1789737109024-9exeb8",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-09-18T13:11:49.024Z"
+    },
+    {
+      "id": "notif-1789737109022-0l0n5e",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "usr-1787130538121-t3cprk",
+      "createdAt": "2026-09-18T13:11:49.022Z"
+    },
+    {
+      "id": "notif-1789737109020-78uj1m",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-003",
+      "createdAt": "2026-09-18T13:11:49.020Z"
+    },
+    {
+      "id": "notif-1789737109018-2wj4m3",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-002",
+      "createdAt": "2026-09-18T13:11:49.018Z"
+    },
+    {
+      "id": "notif-1789737109016-vlgxfv",
+      "title": "🗓️ New Event: 🧪 AI Robotics Grand Prix 2026",
+      "message": "Scheduled on 28/9/2026 at Robotics Complex, Block B. Organized by Robotics Society & IEEE.",
+      "type": "EVENT",
+      "read": false,
+      "link": "/student/calendar",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:11:49.016Z"
+    },
+    {
+      "id": "notif-1789737108978-6068bm",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "usr-1787155759559-tj4j1w",
+      "createdAt": "2026-09-18T13:11:48.978Z"
+    },
+    {
+      "id": "notif-1789737108976-131tv1",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "usr-1787130538121-t3cprk",
+      "createdAt": "2026-09-18T13:11:48.976Z"
+    },
+    {
+      "id": "notif-1789737108975-ihk6wb",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-003",
+      "createdAt": "2026-09-18T13:11:48.975Z"
+    },
+    {
+      "id": "notif-1789737108973-dudmu2",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-002",
+      "createdAt": "2026-09-18T13:11:48.973Z"
+    },
+    {
+      "id": "notif-1789737108972-rq5lh5",
+      "title": "📢 [New Notice] 🧪 Automated Test Announcement: IEEE Symposium 2026",
+      "message": "Test circular published to verify admin broadcast channel.",
+      "type": "ANNOUNCEMENT",
+      "read": false,
+      "link": "/student/announcements",
+      "userId": "student-user-001",
+      "createdAt": "2026-09-18T13:11:48.972Z"
+    },
     {
       "id": "notif-1787157228657-2d8a5c",
       "title": "💬 Admin Responded to: about collecting MEMOS",
@@ -432,6 +832,87 @@
     }
   ],
   "activityLogs": [
+    {
+      "id": "act-1789737166096-hqbzi1",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-1789737166085-6hmrrh",
+      "details": "Administrator Dr. Evelyn Vance responded to query \"Cap-stone Project Presentation Schedule\" (Status: RESOLVED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.096Z"
+    },
+    {
+      "id": "act-1789737166078-7q8aeb",
+      "action": "EVENT_CREATED",
+      "entityType": "Event",
+      "entityId": "evt-1789737166057-jlc1xb",
+      "details": "Created event \"🧪 AI Robotics Grand Prix 2026\" on 2026-09-28T13:12:46.053Z.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.078Z"
+    },
+    {
+      "id": "act-1789737166044-no5vjc",
+      "action": "ANNOUNCEMENT_CREATED",
+      "entityType": "Announcement",
+      "entityId": "ann-1789737166024-1s2nl1",
+      "details": "Created announcement \"🧪 Automated Test Announcement: IEEE Symposium 2026\" (IMPORTANT - PUBLISHED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.044Z"
+    },
+    {
+      "id": "act-1789737166002-c02rap",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:46.002Z"
+    },
+    {
+      "id": "act-1789737155079-yxohep",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:12:35.079Z"
+    },
+    {
+      "id": "act-1789737109043-bx1dtu",
+      "action": "QUERY_RESPONDED",
+      "entityType": "Query",
+      "entityId": "qry-1789737109032-ix80l6",
+      "details": "Administrator Dr. Evelyn Vance responded to query \"Cap-stone Project Presentation Schedule\" (Status: RESOLVED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:49.043Z"
+    },
+    {
+      "id": "act-1789737109025-w7rsss",
+      "action": "EVENT_CREATED",
+      "entityType": "Event",
+      "entityId": "evt-1789737108990-vrslxu",
+      "details": "Created event \"🧪 AI Robotics Grand Prix 2026\" on 2026-09-28T13:11:48.986Z.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:49.025Z"
+    },
+    {
+      "id": "act-1789737108979-u7gws5",
+      "action": "ANNOUNCEMENT_CREATED",
+      "entityType": "Announcement",
+      "entityId": "ann-1789737108969-2ojbmg",
+      "details": "Created announcement \"🧪 Automated Test Announcement: IEEE Symposium 2026\" (IMPORTANT - PUBLISHED).",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:48.979Z"
+    },
+    {
+      "id": "act-1789737108939-xla8f3",
+      "action": "ADMIN_LOGIN",
+      "entityType": "Auth",
+      "entityId": "admin-user-001",
+      "details": "Administrator Dr. Evelyn Vance logged in.",
+      "adminId": "admin-user-001",
+      "createdAt": "2026-09-18T13:11:48.939Z"
+    },
     {
       "id": "act-1787157286682-5y772i",
       "action": "ADMIN_LOGOUT",

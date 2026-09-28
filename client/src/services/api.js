@@ -1,11 +1,15 @@
-const API_BASE = '/api';
+const rawBase = import.meta.env.VITE_API_URL || '/api';
+const API_BASE = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
 export async function request(endpoint, options = {}) {
-  const url = `${API_BASE}${endpoint}`;
+  const formattedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${API_BASE}${formattedEndpoint}`;
   const isFormData = options.body instanceof FormData;
+  const token = typeof window !== 'undefined' ? localStorage.getItem('notifyhub_token') : null;
 
   const headers = {
     ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...(options.headers || {}),
   };
 
@@ -18,6 +22,9 @@ export async function request(endpoint, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
+    if (response.status === 401 && typeof window !== 'undefined') {
+      localStorage.removeItem('notifyhub_token');
+    }
     const error = new Error(data.message || 'An error occurred during request.');
     error.status = response.status;
     error.data = data;

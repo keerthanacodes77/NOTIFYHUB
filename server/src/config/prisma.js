@@ -8,8 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DB_STORE_PATH = path.join(__dirname, '../../data-store.json');
 
-let prismaClientInstance = null;
+let realPrisma = null;
 let useFallbackStore = false;
+let fallbackAdapterInstance = null;
 
 // Fallback in-memory/file-backed persistent store for seamless local execution
 let memoryStore = {
@@ -25,7 +26,15 @@ const loadStoreFromFile = () => {
   try {
     if (fs.existsSync(DB_STORE_PATH)) {
       const raw = fs.readFileSync(DB_STORE_PATH, 'utf-8');
-      memoryStore = JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      memoryStore = {
+        users: parsed.users || [],
+        announcements: parsed.announcements || [],
+        events: parsed.events || [],
+        queries: parsed.queries || [],
+        notifications: parsed.notifications || [],
+        activityLogs: parsed.activityLogs || [],
+      };
     }
   } catch (err) {
     console.error('Error loading fallback store:', err);
@@ -33,6 +42,7 @@ const loadStoreFromFile = () => {
 };
 
 const saveStoreToFile = () => {
+  if (process.env.NODE_ENV === 'production') return;
   try {
     const dir = path.dirname(DB_STORE_PATH);
     if (!fs.existsSync(dir)) {
@@ -392,6 +402,7 @@ class FallbackAdapter {
   constructor() {
     this.user = {
       findUnique: async ({ where }) => {
+        loadStoreFromFile();
         if (where.email) {
           return memoryStore.users.find(u => u.email.toLowerCase() === where.email.toLowerCase()) || null;
         }
@@ -399,18 +410,22 @@ class FallbackAdapter {
           return memoryStore.users.find(u => u.id === where.id) || null;
         }
         if (where.rollNumber) {
-          return memoryStore.users.find(u => u.rollNumber === where.rollNumber) || null;
+          return memoryStore.users.find(u => u.rollNumber && u.rollNumber.toLowerCase() === where.rollNumber.toLowerCase()) || null;
         }
         return null;
       },
-      findFirst: async ({ where }) => {
+      findFirst: async ({ where = {} }) => {
+        loadStoreFromFile();
         return memoryStore.users.find(u => {
           if (where.email && u.email.toLowerCase() !== where.email.toLowerCase()) return false;
           if (where.id && u.id !== where.id) return false;
+          if (where.rollNumber && (!u.rollNumber || u.rollNumber.toLowerCase() !== where.rollNumber.toLowerCase())) return false;
+          if (where.role && u.role !== where.role) return false;
           return true;
         }) || null;
       },
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.users];
         if (args.where?.role) {
           list = list.filter(u => u.role === args.where.role);
@@ -418,6 +433,7 @@ class FallbackAdapter {
         return list;
       },
       count: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.users];
         if (args.where?.role) {
           list = list.filter(u => u.role === args.where.role);
@@ -425,6 +441,7 @@ class FallbackAdapter {
         return list.length;
       },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newUser = {
           id: data.id || `usr-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           name: data.name,
@@ -442,7 +459,8 @@ class FallbackAdapter {
         return newUser;
       },
       update: async ({ where, data }) => {
-        const index = memoryStore.users.findIndex(u => u.id === where.id);
+        loadStoreFromFile();
+        const index = memoryStore.users.findIndex(u => (where.id && u.id === where.id) || (where.email && u.email.toLowerCase() === where.email.toLowerCase()));
         if (index === -1) throw new Error('User not found');
         memoryStore.users[index] = {
           ...memoryStore.users[index],
@@ -456,27 +474,33 @@ class FallbackAdapter {
 
     this.announcement = {
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.announcements];
         const where = args.where || {};
         if (where.status) list = list.filter(a => a.status === where.status);
-        if (where.category) list = list.filter(a => a.category.toLowerCase() === where.category.toLowerCase());
-        if (where.priority) list = list.filter(a => a.priority === where.priority);
+        if (where.category && where.category !== 'All') list = list.filter(a => a.category.toLowerCase() === where.category.toLowerCase());
+        if (where.priority && where.priority !== 'All') list = list.filter(a => a.priority === where.priority);
         if (where.department && where.department !== 'All') {
           list = list.filter(a => a.department === 'All' || a.department === where.department);
         }
-        if (args.orderBy?.createdAt === 'desc') {
+        if (where.year && where.year !== 'All') {
+          list = list.filter(a => a.year === 'All' || a.year === where.year);
+        }
+        if (args.orderBy?.createdAt === 'asc') {
+          list.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        } else {
           list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         }
         if (args.take) {
           list = list.slice(0, args.take);
         }
-        // attach author if include
         return list.map(a => ({
           ...a,
           author: memoryStore.users.find(u => u.id === a.createdBy) || { name: 'College Admin', email: 'admin@notifyhub.edu' },
         }));
       },
       findUnique: async ({ where }) => {
+        loadStoreFromFile();
         const item = memoryStore.announcements.find(a => a.id === where.id);
         if (!item) return null;
         return {
@@ -485,6 +509,7 @@ class FallbackAdapter {
         };
       },
       count: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.announcements];
         const where = args.where || {};
         if (where.status) list = list.filter(a => a.status === where.status);
@@ -492,6 +517,7 @@ class FallbackAdapter {
         return list.length;
       },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newAnn = {
           id: data.id || `ann-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           title: data.title,
@@ -511,9 +537,13 @@ class FallbackAdapter {
         };
         memoryStore.announcements.unshift(newAnn);
         saveStoreToFile();
-        return newAnn;
+        return {
+          ...newAnn,
+          author: memoryStore.users.find(u => u.id === newAnn.createdBy) || { name: 'College Admin', email: 'admin@notifyhub.edu' },
+        };
       },
       update: async ({ where, data }) => {
+        loadStoreFromFile();
         const index = memoryStore.announcements.findIndex(a => a.id === where.id);
         if (index === -1) throw new Error('Announcement not found');
         memoryStore.announcements[index] = {
@@ -522,9 +552,13 @@ class FallbackAdapter {
           updatedAt: new Date().toISOString(),
         };
         saveStoreToFile();
-        return memoryStore.announcements[index];
+        return {
+          ...memoryStore.announcements[index],
+          author: memoryStore.users.find(u => u.id === memoryStore.announcements[index].createdBy) || { name: 'College Admin', email: 'admin@notifyhub.edu' },
+        };
       },
       delete: async ({ where }) => {
+        loadStoreFromFile();
         const index = memoryStore.announcements.findIndex(a => a.id === where.id);
         if (index === -1) throw new Error('Announcement not found');
         const deleted = memoryStore.announcements.splice(index, 1)[0];
@@ -535,6 +569,7 @@ class FallbackAdapter {
 
     this.event = {
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.events];
         if (args.orderBy?.date === 'asc') {
           list.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -550,6 +585,7 @@ class FallbackAdapter {
         }));
       },
       findUnique: async ({ where }) => {
+        loadStoreFromFile();
         const item = memoryStore.events.find(e => e.id === where.id);
         if (!item) return null;
         return {
@@ -557,8 +593,12 @@ class FallbackAdapter {
           author: memoryStore.users.find(u => u.id === item.createdBy) || { name: 'Event Coordinator' },
         };
       },
-      count: async () => memoryStore.events.length,
+      count: async () => {
+        loadStoreFromFile();
+        return memoryStore.events.length;
+      },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newEvent = {
           id: data.id || `evt-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           title: data.title,
@@ -579,9 +619,13 @@ class FallbackAdapter {
         };
         memoryStore.events.unshift(newEvent);
         saveStoreToFile();
-        return newEvent;
+        return {
+          ...newEvent,
+          author: memoryStore.users.find(u => u.id === newEvent.createdBy) || { name: 'Event Coordinator' },
+        };
       },
       update: async ({ where, data }) => {
+        loadStoreFromFile();
         const index = memoryStore.events.findIndex(e => e.id === where.id);
         if (index === -1) throw new Error('Event not found');
         memoryStore.events[index] = {
@@ -590,9 +634,13 @@ class FallbackAdapter {
           updatedAt: new Date().toISOString(),
         };
         saveStoreToFile();
-        return memoryStore.events[index];
+        return {
+          ...memoryStore.events[index],
+          author: memoryStore.users.find(u => u.id === memoryStore.events[index].createdBy) || { name: 'Event Coordinator' },
+        };
       },
       delete: async ({ where }) => {
+        loadStoreFromFile();
         const index = memoryStore.events.findIndex(e => e.id === where.id);
         if (index === -1) throw new Error('Event not found');
         const deleted = memoryStore.events.splice(index, 1)[0];
@@ -603,6 +651,7 @@ class FallbackAdapter {
 
     this.query = {
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.queries];
         const where = args.where || {};
         if (where.studentId) list = list.filter(q => q.studentId === where.studentId);
@@ -615,6 +664,7 @@ class FallbackAdapter {
         }));
       },
       findUnique: async ({ where }) => {
+        loadStoreFromFile();
         const item = memoryStore.queries.find(q => q.id === where.id);
         if (!item) return null;
         return {
@@ -624,6 +674,7 @@ class FallbackAdapter {
         };
       },
       count: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.queries];
         const where = args.where || {};
         if (where.status) list = list.filter(q => q.status === where.status);
@@ -631,6 +682,7 @@ class FallbackAdapter {
         return list.length;
       },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newQuery = {
           id: data.id || `qry-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           subject: data.subject,
@@ -645,9 +697,14 @@ class FallbackAdapter {
         };
         memoryStore.queries.unshift(newQuery);
         saveStoreToFile();
-        return newQuery;
+        return {
+          ...newQuery,
+          student: memoryStore.users.find(u => u.id === newQuery.studentId) || null,
+          admin: null,
+        };
       },
       update: async ({ where, data }) => {
+        loadStoreFromFile();
         const index = memoryStore.queries.findIndex(q => q.id === where.id);
         if (index === -1) throw new Error('Query not found');
         memoryStore.queries[index] = {
@@ -656,9 +713,14 @@ class FallbackAdapter {
           updatedAt: new Date().toISOString(),
         };
         saveStoreToFile();
-        return memoryStore.queries[index];
+        return {
+          ...memoryStore.queries[index],
+          student: memoryStore.users.find(u => u.id === memoryStore.queries[index].studentId) || null,
+          admin: memoryStore.users.find(u => u.id === memoryStore.queries[index].respondedBy) || null,
+        };
       },
       delete: async ({ where }) => {
+        loadStoreFromFile();
         const index = memoryStore.queries.findIndex(q => q.id === where.id);
         if (index === -1) throw new Error('Query not found');
         const deleted = memoryStore.queries.splice(index, 1)[0];
@@ -669,6 +731,7 @@ class FallbackAdapter {
 
     this.notification = {
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.notifications];
         const where = args.where || {};
         if (where.userId) list = list.filter(n => n.userId === where.userId);
@@ -678,9 +741,11 @@ class FallbackAdapter {
         return list;
       },
       findUnique: async ({ where }) => {
+        loadStoreFromFile();
         return memoryStore.notifications.find(n => n.id === where.id) || null;
       },
       count: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.notifications];
         const where = args.where || {};
         if (where.userId) list = list.filter(n => n.userId === where.userId);
@@ -688,6 +753,7 @@ class FallbackAdapter {
         return list.length;
       },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newNotif = {
           id: data.id || `notif-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           title: data.title,
@@ -703,6 +769,7 @@ class FallbackAdapter {
         return newNotif;
       },
       update: async ({ where, data }) => {
+        loadStoreFromFile();
         const index = memoryStore.notifications.findIndex(n => n.id === where.id);
         if (index === -1) throw new Error('Notification not found');
         memoryStore.notifications[index] = {
@@ -713,9 +780,11 @@ class FallbackAdapter {
         return memoryStore.notifications[index];
       },
       updateMany: async ({ where, data }) => {
+        loadStoreFromFile();
         let count = 0;
         memoryStore.notifications = memoryStore.notifications.map(n => {
           if (where.userId && n.userId !== where.userId) return n;
+          if (where.read !== undefined && n.read !== where.read) return n;
           count++;
           return { ...n, ...data };
         });
@@ -726,6 +795,7 @@ class FallbackAdapter {
 
     this.activityLog = {
       findMany: async (args = {}) => {
+        loadStoreFromFile();
         let list = [...memoryStore.activityLogs];
         const where = args.where || {};
         if (where.action) list = list.filter(l => l.action.includes(where.action));
@@ -738,6 +808,7 @@ class FallbackAdapter {
         }));
       },
       create: async ({ data }) => {
+        loadStoreFromFile();
         const newLog = {
           id: data.id || `act-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
           action: data.action,
@@ -751,7 +822,10 @@ class FallbackAdapter {
         saveStoreToFile();
         return newLog;
       },
-      count: async () => memoryStore.activityLogs.length,
+      count: async () => {
+        loadStoreFromFile();
+        return memoryStore.activityLogs.length;
+      },
     };
   }
 
@@ -762,36 +836,197 @@ class FallbackAdapter {
   async $disconnect() {
     return true;
   }
-}
 
-// Check PostgreSQL connectivity or instantiate fallback
-try {
-  const realPrisma = new PrismaClient();
-  // We export a proxy or instance
-  prismaClientInstance = realPrisma;
-} catch (e) {
-  useFallbackStore = true;
-  prismaClientInstance = new FallbackAdapter();
-}
-
-// Wrap to catch connection failures dynamically and gracefully fallback
-const prisma = new Proxy(prismaClientInstance, {
-  get(target, prop) {
-    if (useFallbackStore) {
-      if (!target || !(target instanceof FallbackAdapter)) {
-        prismaClientInstance = new FallbackAdapter();
-      }
-      return prismaClientInstance[prop];
+  async $transaction(input) {
+    if (typeof input === 'function') {
+      return await input(this);
     }
-    return target[prop] || (new FallbackAdapter())[prop];
+    if (Array.isArray(input)) {
+      return await Promise.all(input);
+    }
+    return input;
+  }
+}
+
+fallbackAdapterInstance = new FallbackAdapter();
+
+// Serverless-safe Prisma client instantiation with connection pooling cache
+const globalForPrisma = globalThis;
+
+try {
+  realPrisma = globalForPrisma.__notifyhub_prisma || new PrismaClient({
+    log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
+  });
+  if (process.env.NODE_ENV !== 'production') {
+    globalForPrisma.__notifyhub_prisma = realPrisma;
+  }
+} catch (err) {
+  if (process.env.NODE_ENV !== 'production') {
+    useFallbackStore = true;
+  } else {
+    console.error('Failed to initialize PrismaClient in production:', err);
+  }
+}
+
+// Background check to probe PostgreSQL in local development without blocking initial server boot
+const probePostgreSql = async () => {
+  if (process.env.NODE_ENV === 'production') {
+    // In production, always use real Prisma connected to cloud PostgreSQL
+    useFallbackStore = false;
+    return;
+  }
+
+  if (!realPrisma) {
+    useFallbackStore = true;
+    return;
+  }
+
+  try {
+    const probePromise = realPrisma.$queryRaw`SELECT 1`;
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('PostgreSQL connection timeout')), 1000)
+    );
+    await Promise.race([probePromise, timeoutPromise]);
+    useFallbackStore = false;
+    console.log('✅ PostgreSQL database connected successfully.');
+  } catch (err) {
+    useFallbackStore = true;
+    console.log('📦 PostgreSQL server not reachable. Seamlessly activated NotifyHub JSON Storage Engine (data-store.json).');
+  }
+};
+
+probePostgreSql();
+
+// Helper to determine if an error is a database connection failure
+const isConnectionError = (err) => {
+  if (!err) return false;
+  const msg = (err.message || '').toLowerCase();
+  const code = err.code || '';
+  return (
+    code === 'P1001' ||
+    code === 'P1002' ||
+    code === 'P1003' ||
+    msg.includes("can't reach database server") ||
+    msg.includes('connection refused') ||
+    msg.includes('econnrefused') ||
+    msg.includes('prismaclientinitializationerror') ||
+    msg.includes('timed out') ||
+    msg.includes('timeout') ||
+    msg.includes('failed to connect') ||
+    msg.includes('database server is running')
+  );
+};
+
+// Create a universal model proxy that delegates to real Prisma in production or FallbackAdapter in local dev
+const createModelProxy = (modelName) => {
+  return new Proxy({}, {
+    get(target, methodName) {
+      return async (...args) => {
+        // In production, always use real Prisma client connected to PostgreSQL
+        if (process.env.NODE_ENV === 'production') {
+          if (!realPrisma) {
+            throw new Error('PrismaClient is not initialized. Please ensure DATABASE_URL is set in Vercel Environment Variables.');
+          }
+          const realModel = realPrisma[modelName];
+          if (realModel && typeof realModel[methodName] === 'function') {
+            return await realModel[methodName](...args);
+          }
+          throw new Error(`Method ${modelName}.${methodName} does not exist on PrismaClient.`);
+        }
+
+        // Local development mode fallback logic:
+        if (useFallbackStore || !realPrisma) {
+          const fallbackModel = fallbackAdapterInstance[modelName];
+          if (fallbackModel && typeof fallbackModel[methodName] === 'function') {
+            return await fallbackModel[methodName](...args);
+          }
+          throw new Error(`Method ${modelName}.${methodName} not implemented in fallback store.`);
+        }
+
+        try {
+          const realModel = realPrisma[modelName];
+          if (realModel && typeof realModel[methodName] === 'function') {
+            return await realModel[methodName](...args);
+          }
+        } catch (err) {
+          if (isConnectionError(err)) {
+            useFallbackStore = true;
+            console.warn(`⚠️ PostgreSQL connection error on ${modelName}.${methodName}: ${err.message}. Switched to fallback store.`);
+            const fallbackModel = fallbackAdapterInstance[modelName];
+            if (fallbackModel && typeof fallbackModel[methodName] === 'function') {
+              return await fallbackModel[methodName](...args);
+            }
+          }
+          throw err;
+        }
+      };
+    },
+  });
+};
+
+// Global Prisma Proxy
+const prisma = new Proxy({}, {
+  get(target, prop) {
+    if (prop === '$connect') {
+      return async () => {
+        if (process.env.NODE_ENV === 'production') {
+          return realPrisma ? await realPrisma.$connect() : true;
+        }
+        if (useFallbackStore) return true;
+        try {
+          if (realPrisma) await realPrisma.$connect();
+          return true;
+        } catch (err) {
+          useFallbackStore = true;
+          return true;
+        }
+      };
+    }
+    if (prop === '$disconnect') {
+      return async () => {
+        if (realPrisma && (!useFallbackStore || process.env.NODE_ENV === 'production')) {
+          try {
+            await realPrisma.$disconnect();
+          } catch (e) {}
+        }
+        return true;
+      };
+    }
+    if (prop === '$transaction') {
+      return async (input) => {
+        if (process.env.NODE_ENV === 'production') {
+          if (!realPrisma) {
+            throw new Error('PrismaClient is not initialized. Please ensure DATABASE_URL is set in Vercel Environment Variables.');
+          }
+          return await realPrisma.$transaction(input);
+        }
+        if (useFallbackStore || !realPrisma) {
+          return await fallbackAdapterInstance.$transaction(input);
+        }
+        try {
+          return await realPrisma.$transaction(input);
+        } catch (err) {
+          if (isConnectionError(err)) {
+            useFallbackStore = true;
+            return await fallbackAdapterInstance.$transaction(input);
+          }
+          throw err;
+        }
+      };
+    }
+
+    // Return model proxy for known entities
+    return createModelProxy(prop);
   },
 });
 
 export const getDbStatus = async () => {
+  const isProd = process.env.NODE_ENV === 'production';
   return {
     status: 'ONLINE',
-    provider: 'PostgreSQL / Prisma Database Engine',
+    provider: isProd || !useFallbackStore ? 'PostgreSQL / Prisma Database Engine' : 'NotifyHub Persistent Storage Engine (JSON File DB)',
     connected: true,
+    engine: isProd || !useFallbackStore ? 'POSTGRESQL' : 'LOCAL_DATA_STORE',
     totalUsers: await prisma.user.count(),
     totalAnnouncements: await prisma.announcement.count(),
     totalEvents: await prisma.event.count(),
@@ -800,3 +1035,4 @@ export const getDbStatus = async () => {
 };
 
 export { prisma, memoryStore };
+

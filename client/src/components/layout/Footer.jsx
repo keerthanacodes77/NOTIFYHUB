@@ -160,7 +160,9 @@ export const Footer = () => {
           }}
         >
           <div>
-            © {new Date().getFullYear()} NotifyHub College Communication Platform. All rights reserved.
+            <strong style={{ fontWeight: 700, color: 'var(--text-secondary)' }}>
+              © {new Date().getFullYear()} notifyhub by MOTHUKU KEERTHANA
+            </strong>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span>Privacy Policy</span>

@@ -1,23 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
-  Bell,
-  Sun,
-  Moon,
   LogOut,
   User,
   Shield,
   Menu,
-  X,
-  Flame,
   ChevronDown,
-  Layers,
   GraduationCap,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { ThemeToggle } from '../common/ThemeToggle.jsx';
-import { NotificationDropdown } from '../common/NotificationDropdown.jsx';
-import { UrgentAlertDropdown } from '../common/UrgentAlertDropdown.jsx';
 
 export const Navbar = ({ onToggleSidebar = null }) => {
   const { user, isAuthenticated, isAdmin, isStudent, logout } = useAuth();
@@ -121,15 +112,6 @@ export const Navbar = ({ onToggleSidebar = null }) => {
 
       {/* Right controls */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {/* Urgent Alert Banner */}
-        <UrgentAlertDropdown />
-
-        {/* Theme Toggle */}
-        <ThemeToggle />
-
-        {/* Notifications if authenticated */}
-        {isAuthenticated && <NotificationDropdown />}
-
         {/* Authenticated User Menu */}
         {isAuthenticated ? (
           <div ref={profileMenuRef} style={{ position: 'relative' }}>
@@ -139,7 +121,7 @@ export const Navbar = ({ onToggleSidebar = null }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '10px',
-                padding: '6px 10px',
+                padding: '6px 12px',
                 borderRadius: 'var(--radius-md)',
                 background: 'var(--bg-tertiary)',
                 border: '1px solid var(--border-color)',
@@ -279,14 +261,23 @@ export const Navbar = ({ onToggleSidebar = null }) => {
             )}
           </div>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Link to="/student/login" className="btn-secondary btn-sm">
-              Student Login
-            </Link>
-            <Link to="/admin/login" className="btn-primary btn-sm">
-              Admin Portal
-            </Link>
-          </div>
+          /* When not logged in: only a single clean Login link */
+          <Link
+            to="/student/login"
+            className="btn-primary btn-md"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 18px',
+              fontSize: '0.88rem',
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            <User size={16} />
+            <span>Login</span>
+          </Link>
         )}
       </div>
     </header>

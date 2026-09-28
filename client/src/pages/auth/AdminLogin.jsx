@@ -8,7 +8,6 @@ import {
   EyeOff,
   ArrowRight,
   Sparkles,
-  KeyRound,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { Navbar } from '../../components/layout/Navbar.jsx';
@@ -42,12 +41,6 @@ export const AdminLogin = () => {
     } else {
       setError(res.message || 'Administrative login failed. Access denied.');
     }
-  };
-
-  const handleFillDemoAdmin = () => {
-    setEmail('admin@notifyhub.edu');
-    setPassword('Admin@123');
-    setError('');
   };
 
   return (
@@ -99,35 +92,6 @@ export const AdminLogin = () => {
             </p>
           </div>
 
-          {/* Quick Demo Autofill button */}
-          <div
-            style={{
-              padding: '12px 16px',
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(139, 92, 246, 0.1)',
-              border: '1px solid rgba(139, 92, 246, 0.25)',
-              marginBottom: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <KeyRound size={16} color="#c084fc" />
-              <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                Demo Admin Account
-              </span>
-            </div>
-            <button
-              type="button"
-              onClick={handleFillDemoAdmin}
-              className="btn-primary btn-sm"
-              style={{ background: 'var(--accent-gradient-purple)', fontSize: '0.74rem' }}
-            >
-              Fill Credentials
-            </button>
-          </div>
-
           {error && (
             <div
               style={{
@@ -157,7 +121,7 @@ export const AdminLogin = () => {
                     setEmail(e.target.value);
                     setError('');
                   }}
-                  placeholder="admin@notifyhub.edu"
+                  placeholder="Enter administrative email"
                   className="form-input"
                   required
                 />

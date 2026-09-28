@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AlertTriangle, ChevronRight, Flame, ShieldAlert, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { announcementService } from '../../services/announcementService.js';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export const UrgentAlertDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,7 @@ export const UrgentAlertDropdown = () => {
   const [loading, setLoading] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  const { isAdmin, isAuthenticated } = useAuth();
 
   const fetchUrgentAlerts = async () => {
     try {
@@ -114,7 +116,7 @@ export const UrgentAlertDropdown = () => {
                 key={alert.id}
                 onClick={() => {
                   setIsOpen(false);
-                  navigate('/student/urgent-alerts');
+                  navigate(isAdmin ? '/admin/announcements' : '/student/urgent-alerts');
                 }}
                 style={{
                   padding: '14px 18px',
@@ -164,7 +166,7 @@ export const UrgentAlertDropdown = () => {
             <button
               onClick={() => {
                 setIsOpen(false);
-                navigate('/student/urgent-alerts');
+                navigate(isAdmin ? '/admin/announcements' : '/student/urgent-alerts');
               }}
               className="btn-danger btn-sm"
               style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}

@@ -154,7 +154,7 @@ export const StudentRegister = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="e.g. Aarav Sharma"
+                  placeholder="Enter your full name"
                   className="form-input"
                   required
                 />

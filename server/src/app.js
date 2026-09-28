@@ -21,9 +21,24 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  config.CLIENT_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [config.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/$/, '');
+      const isAllowed = allowedOrigins.some(allowed => allowed && allowed.replace(/\/$/, '') === cleanOrigin);
+      if (isAllowed) {
+        return callback(null, true);
+      }
+      return callback(null, false);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

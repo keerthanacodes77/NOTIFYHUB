@@ -5,14 +5,25 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const uploadDir = path.join(__dirname, '../../uploads');
+const uploadDir = process.env.NODE_ENV === 'production' 
+  ? path.join('/tmp', 'uploads')
+  : path.join(__dirname, '../../uploads');
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (e) {
+  // Graceful fallback for restricted filesystems
 }
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
+    try {
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+    } catch (e) {}
     cb(null, uploadDir);
   },
   filename: (req, file, cb) => {

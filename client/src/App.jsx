@@ -41,6 +41,7 @@ export const App = () => {
             <Routes>
               {/* Public Routes */}
               <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<Navigate to="/student/login" replace />} />
               <Route path="/student/register" element={<StudentRegister />} />
               <Route path="/student/login" element={<StudentLogin />} />
               <Route path="/admin/login" element={<AdminLogin />} />

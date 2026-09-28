@@ -441,10 +441,10 @@ export const LandingPage = () => {
               </p>
 
               <div style={{ display: 'flex', gap: '14px', marginBottom: '24px' }}>
-                <Link to="/student/about" className="btn-secondary">
+                <a href="#campus-directory" className="btn-secondary">
                   <span>Explore Campus Directory</span>
                   <ChevronRight size={16} />
-                </Link>
+                </a>
               </div>
 
               {/* Campus Architecture Card */}
@@ -491,7 +491,7 @@ export const LandingPage = () => {
               </div>
             </div>
 
-            {/* Quick Interactive Demo Credentials Card */}
+            {/* Institutional Portal Access Card */}
             <div
               className="glass-card"
               style={{
@@ -501,60 +501,124 @@ export const LandingPage = () => {
               }}
             >
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px', color: 'var(--text-primary)' }}>
-                Instant Evaluation Access
+                Institutional Portal Access
               </h3>
               <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                Test the live platform with pre-configured realistic student and administrator accounts:
+                Secure, role-based access for enrolled Vignan students and authorized college administrators:
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {/* Admin demo block */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {/* Student Login Block */}
                 <div
                   style={{
                     padding: '14px 16px',
                     borderRadius: 'var(--radius-md)',
                     background: 'var(--bg-tertiary)',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    border: '1px solid rgba(99, 102, 241, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}
                 >
-                  <div>
-                    <strong style={{ fontSize: '0.9rem', color: '#c084fc', display: 'block' }}>
-                      Administrator (Dr. Evelyn Vance)
-                    </strong>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
-                      admin@notifyhub.edu • Pass: Admin@123
-                    </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: 'var(--radius-md)',
+                        background: 'rgba(99, 102, 241, 0.15)',
+                        color: 'var(--accent-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <GraduationCap size={20} />
+                    </div>
+                    <div>
+                      <strong style={{ fontSize: '0.9rem', color: 'var(--text-primary)', display: 'block' }}>
+                        Student Portal
+                      </strong>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--text-tertiary)' }}>
+                        Circulars, emergency alerts, exam schedules & Q&A
+                      </span>
+                    </div>
                   </div>
-                  <Link to="/admin/login" className="btn-primary btn-sm" style={{ background: 'var(--accent-gradient-purple)' }}>
+                  <Link to="/student/login" className="btn-primary btn-sm" style={{ flexShrink: 0 }}>
+                    Sign In
+                  </Link>
+                </div>
+
+                {/* Admin Console Block */}
+                <div
+                  style={{
+                    padding: '14px 16px',
+                    borderRadius: 'var(--radius-md)',
+                    background: 'var(--bg-tertiary)',
+                    border: '1px solid rgba(139, 92, 246, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: 'var(--radius-md)',
+                        background: 'rgba(139, 92, 246, 0.15)',
+                        color: '#c084fc',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Shield size={20} />
+                    </div>
+                    <div>
+                      <strong style={{ fontSize: '0.9rem', color: 'var(--text-primary)', display: 'block' }}>
+                        Administrator Console
+                      </strong>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--text-tertiary)' }}>
+                        Notice broadcast, moderation & audit controls
+                      </span>
+                    </div>
+                  </div>
+                  <Link to="/admin/login" className="btn-primary btn-sm" style={{ background: 'var(--accent-gradient-purple)', flexShrink: 0 }}>
                     Admin Login
                   </Link>
                 </div>
 
-                {/* Student demo block */}
+                {/* New student register prompt */}
                 <div
                   style={{
-                    padding: '14px 16px',
+                    padding: '10px 14px',
                     borderRadius: 'var(--radius-md)',
-                    background: 'var(--bg-tertiary)',
-                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    background: 'rgba(99, 102, 241, 0.08)',
+                    border: '1px dashed var(--border-color)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    fontSize: '0.8rem',
                   }}
                 >
-                  <div>
-                    <strong style={{ fontSize: '0.9rem', color: 'var(--accent-primary)', display: 'block' }}>
-                      Student (Aarav Sharma - CSE)
-                    </strong>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
-                      aarav.sharma@student.edu • Pass: Student@123
-                    </span>
-                  </div>
-                  <Link to="/student/login" className="btn-primary btn-sm">
-                    Student Login
+                  <span style={{ color: 'var(--text-secondary)' }}>New to Vignan Institute?</span>
+                  <Link
+                    to="/student/register"
+                    style={{
+                      color: 'var(--accent-primary)',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                    }}
+                  >
+                    <span>Create Student Account</span>
+                    <ArrowRight size={13} />
                   </Link>
                 </div>
               </div>
@@ -564,7 +628,7 @@ export const LandingPage = () => {
       </section>
 
       {/* Campus Information & Contact Directory Section */}
-      <section style={{ padding: '80px 0', background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
+      <section id="campus-directory" style={{ padding: '80px 0', background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
             <span

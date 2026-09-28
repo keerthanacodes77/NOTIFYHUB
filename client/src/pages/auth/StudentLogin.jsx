@@ -7,8 +7,6 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
-  Sparkles,
-  ShieldAlert,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { Navbar } from '../../components/layout/Navbar.jsx';
@@ -42,12 +40,6 @@ export const StudentLogin = () => {
     } else {
       setError(res.message || 'Login failed. Please check credentials.');
     }
-  };
-
-  const handleFillDemo = (studentEmail) => {
-    setEmail(studentEmail);
-    setPassword('Student@123');
-    setError('');
   };
 
   return (
@@ -99,42 +91,6 @@ export const StudentLogin = () => {
             </p>
           </div>
 
-          {/* Quick Demo Autofill helper */}
-          <div
-            style={{
-              padding: '12px 14px',
-              borderRadius: 'var(--radius-md)',
-              background: 'var(--bg-tertiary)',
-              border: '1px solid var(--border-color)',
-              marginBottom: '20px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-              <Sparkles size={14} color="var(--accent-primary)" />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
-                Demo Student Accounts (Click to Fill):
-              </span>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              <button
-                type="button"
-                onClick={() => handleFillDemo('aarav.sharma@student.edu')}
-                className="btn-outline btn-sm"
-                style={{ fontSize: '0.74rem', padding: '4px 8px' }}
-              >
-                Aarav (CSE 3rd Yr)
-              </button>
-              <button
-                type="button"
-                onClick={() => handleFillDemo('priya.patel@student.edu')}
-                className="btn-outline btn-sm"
-                style={{ fontSize: '0.74rem', padding: '4px 8px' }}
-              >
-                Priya (ECE 3rd Yr)
-              </button>
-            </div>
-          </div>
-
           {error && (
             <div
               style={{
@@ -164,7 +120,7 @@ export const StudentLogin = () => {
                     setEmail(e.target.value);
                     setError('');
                   }}
-                  placeholder="name@student.edu"
+                  placeholder="Enter student email (e.g. name@student.edu)"
                   className="form-input"
                   required
                 />

@@ -10,14 +10,23 @@ export const AuthProvider = ({ children }) => {
   const { addToast } = useToast();
 
   const fetchUser = async () => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('notifyhub_token') : null;
+    if (!token) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await authService.getMe();
       if (res.success && res.user) {
         setUser(res.user);
       } else {
+        localStorage.removeItem('notifyhub_token');
         setUser(null);
       }
     } catch (err) {
+      localStorage.removeItem('notifyhub_token');
       setUser(null);
     } finally {
       setLoading(false);
@@ -32,6 +41,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await authService.login({ email, password, requiredRole });
       if (res.success && res.user) {
+        if (res.token) {
+          localStorage.setItem('notifyhub_token', res.token);
+        }
         setUser(res.user);
         addToast(`Welcome back, ${res.user.name}!`, 'success');
         return { success: true, user: res.user };
@@ -48,6 +60,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await authService.register(userData);
       if (res.success && res.user) {
+        if (res.token) {
+          localStorage.setItem('notifyhub_token', res.token);
+        }
         setUser(res.user);
         addToast('Registration successful! Welcome to NotifyHub.', 'success');
         return { success: true, user: res.user };
@@ -63,10 +78,12 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await authService.logout();
+    } catch (err) {
+      // ignore
+    } finally {
+      localStorage.removeItem('notifyhub_token');
       setUser(null);
       addToast('You have been logged out safely.', 'info');
-    } catch (err) {
-      setUser(null);
     }
   };
 

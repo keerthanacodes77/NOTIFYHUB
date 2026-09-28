@@ -1,7 +1,41 @@
+# Dependencies
 node_modules/
 client/node_modules/
 server/node_modules/
+
+# Production & Build outputs
 dist/
 client/dist/
+build/
+.vercel
+
+# Archives & Temporary files
+*.zip
+*.tar.gz
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files and Secrets
 .env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 server/.env
+server/.env.*
+server/.env.local
+client/.env
+client/.env.*
+client/.env.local
+
+# Allow example files to be committed as templates
+!.env.example
+!server/.env.example
+!client/.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
